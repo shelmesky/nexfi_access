@@ -39,8 +39,9 @@ $SLEEP 1
 $IW dev adhoc0 set type ibss
 $IW dev adhoc0 ibss leave
 $IW dev adhoc0 ibss join $MESHID $CHANNEL_FREQ HT20 fixed-freq $BSSID
-$SLEEP 2
+$SLEEP 3
 $IFCONFIG bat0 up
 $IFCONFIG br-lan up
+$BRCTL addif br-lan bat0
 
 echo "change channel to $CHANNEL_FREQ MHz."
