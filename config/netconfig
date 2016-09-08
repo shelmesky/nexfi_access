@@ -1,0 +1,10 @@
+
+config adhoc
+	option type 'NEXFI-PRO'
+	option wmac '0E:03:01:00:10:1F'
+	option mac '1E:03:01:00:10:1F'
+	option brmac '3E:03:01:00:10:1F'
+	option meshid 'n-000000'
+	option freq '2447'
+	option bssid '00:0B:27:E8:E4:9D'
+
