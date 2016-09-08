@@ -25,7 +25,17 @@ uci set system.@button[-1].button=BTN_0
 uci set system.@button[-1].action=released
 uci set system.@button[-1].handler='/root/nexfi-std/script/channel-sw.sh'
 uci set system.@button[-1].min=0
-uci set system.@button[-1].max=3
+uci set system.@button[-1].max=1
+
+uci -c /etc/config commit system
+
+uci add system button
+uci set system.@button[-1].button=BTN_0
+uci set system.@button[-1].action=released
+uci set system.@button[-1].handler='/root/nexfi-std/guard/button.sh'
+uci set system.@button[-1].min=3
+uci set system.@button[-1].max=6
+
 uci -c /etc/config commit system
 
 # upgrade configuration.
@@ -33,6 +43,10 @@ cp config/conf_version /root
 echo "/etc/" >> /etc/sysupgrade.conf
 echo "/root/" >> /etc/sysupgrade.conf
 echo "0 */12 * * *       /root/nexfi-std/script/upgrade.sh" >> /etc/crontabs/root
+
+# override the kmod
+mv ./kmod/batman-adv.ko /lib/modules/3.18.36
+rm /root/nexfi-std.tar.gz
 
 echo "nexfi configuration installed."
 

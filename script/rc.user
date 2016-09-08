@@ -2,5 +2,9 @@
 # Put your custom commands here that should be executed once
 # the system init finished. By default this file does nothing.
 
+mkfifo /tmp/ledfifo
+mkfifo /tmp/msgfifo
+
+#/root/nexfi-std/guard/guard -f /root/nexfi-std/guard/config.json 1 > /dev/null 2>&1 &
 /root/nexfi-std/script/nexfi-led.sh 1 > /dev/null 2>&1 &
 

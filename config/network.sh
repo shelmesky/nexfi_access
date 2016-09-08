@@ -1,7 +1,10 @@
 #!/bin/sh
 
 CFG_PATH="/root/nexfi-std/config"
-source $CFG_PATH/config.in
+
+TYPE=$(uci -c $CFG_PATH get netconfig.@adhoc[-1].type)
+WMAC=$(uci -c $CFG_PATH get netconfig.@adhoc[-1].wmac)
+MESHID=$(uci -c $CFG_PATH get netconfig.@adhoc[-1].meshid)
 
 # create network configuration
 
